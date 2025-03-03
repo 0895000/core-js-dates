@@ -102,8 +102,8 @@ function getNextFriday(date) {
  * 1, 2024 => 31
  * 2, 2024 => 29
  */
-function getCountDaysInMonth(/* month, year */) {
-  throw new Error('Not implemented');
+function getCountDaysInMonth(month, year) {
+  return new Date(year, month, 0).getDate();
 }
 
 /**
@@ -117,8 +117,14 @@ function getCountDaysInMonth(/* month, year */) {
  * '2024-02-01T00:00:00.000Z', '2024-02-02T00:00:00.000Z'  => 2
  * '2024-02-01T00:00:00.000Z', '2024-02-12T00:00:00.000Z'  => 12
  */
-function getCountDaysOnPeriod(/* dateStart, dateEnd */) {
-  throw new Error('Not implemented');
+function getCountDaysOnPeriod(dateStart, dateEnd) {
+  const startDate = dateStart instanceof Date ? dateStart : new Date(dateStart);
+  const endDate = dateEnd instanceof Date ? dateEnd : new Date(dateEnd);
+  const diffTime = endDate.getTime() - startDate.getTime();
+  const MsPerDay = 24 * 60 * 60 * 1000;
+  const diffDays = Math.floor(diffTime / MsPerDay);
+
+  return diffDays + 1;
 }
 
 /**
