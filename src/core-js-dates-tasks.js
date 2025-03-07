@@ -197,7 +197,7 @@ function getCountWeekendsInMonth(month, year) {
 
   let weekendCount = 0;
 
-  for (let day = 1; day <= lastDayOfMonth; day + 1) {
+  for (let day = 1; day <= lastDayOfMonth; day += 1) {
     const currentDate = new Date(year, month - 1, day);
     const dayOfWeek = currentDate.getDay();
 
